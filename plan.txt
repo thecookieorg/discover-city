@@ -1,0 +1,7 @@
+Step 1:
+- Add Devise with only 1 model: User
+- Add CanCanCan and add 'admin:boolean' column to the user table
+ -- if current_user.admin?
+        # do something
+    end
+- Add Rails Admin gem for administrators
