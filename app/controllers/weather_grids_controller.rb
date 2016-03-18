@@ -1,4 +1,5 @@
 class WeatherGridsController < ApplicationController
+  require 'forecast_io'
   before_action :set_weather_grid, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
   # GET /weather_grids
@@ -10,6 +11,17 @@ class WeatherGridsController < ApplicationController
   # GET /weather_grids/1
   # GET /weather_grids/1.json
   def show
+    @weather_locations = WeatherLocation.where(:weather_grid => @weather_grid)
+    @weather_info = []
+    
+    for w in @weather_locations
+      data = Hash.new
+      data['location'] = w
+      data['weather']  = get_weather(w)
+      
+      # Add data to weather info
+      @weather_info.push(data)
+    end
   end
 
   # GET /weather_grids/new
@@ -63,6 +75,16 @@ class WeatherGridsController < ApplicationController
   end
 
   private
+  
+    # Forecast.io API
+    def get_weather (weather_location)
+      forecast_api_key = "26db955aa13b816a982b8493b2bdde73"
+      ForecastIO.api_key = forecast_api_key
+      
+      # Make call to Forecast for fetchinig weather
+      forecast = ForecastIO.forecast(weather_location.latitude, weather_location.longitude)
+    end
+    
     # Use callbacks to share common setup or constraints between actions.
     def set_weather_grid
       @weather_grid = WeatherGrid.find(params[:id])

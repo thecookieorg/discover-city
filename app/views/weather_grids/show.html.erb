@@ -2,7 +2,7 @@
 
 <p>
   <strong>Name:</strong>
-  <%= @weather_grid.name %>
+  
 </p>
 
 <p>
@@ -12,3 +12,47 @@
 
 <%= link_to 'Edit', edit_weather_grid_path(@weather_grid) %> |
 <%= link_to 'Back', weather_grids_path %>
+
+<div class="container">
+<div class="row">
+  <div class="col-md-12">
+    <div class="panel panel-success">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= @weather_grid.name %></h3>
+      </div>
+      <% @weather_info.each do |weather_info| %>
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-md-12 text-center">
+              <h2><%= weather_info['location'].city %></h2>
+              <small><em>Latitude:</em> <%= weather_info['location'].latitude %> | <em>Longitude:</em><%= weather_info['location'].longitude %> | <em>Timezone:</em> <%= weather_info['weather'].timezone %></small>
+            </div>
+          </div>
+          <div class="row" style="margin-top: 17px;">
+            <div class="col-md-4 text-center">
+              <% css = forecast_to_css_mapping(weather_info['weather'].currently.icon) %>
+              <p class="lead" style="margin-bottom: 0px;"><%= weather_info['weather'].currently.summary %></p><div class="<%= css %>" style="font-size: 5em;"></div> 
+            </div>
+            <div class="col-md-4 text-center">
+              <p class="lead"><%= weather_info['weather'].hourly.summary %></p>
+            </div>
+            <div class="col-md-4 text-center">
+              <p class="lead"><%= weather_info['weather'].daily.summary %></p>
+            </div>
+          </div>
+          
+          
+          
+          <%# weather_info['weather'].city %>
+        </div>
+        
+        
+        
+        
+        
+      <% end %>
+    </div>
+  </div>
+</div>
+<a href="http://forecast.io" target="_blank">Powered by Forecast</a>
+</div>

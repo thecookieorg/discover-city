@@ -52,3 +52,4 @@ gem 'cancancan', '~> 1.10'
 gem 'rails_admin'
 gem "font-awesome-rails"
 gem 'geocoder'
+gem 'forecast_io'

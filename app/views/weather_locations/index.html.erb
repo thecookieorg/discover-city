@@ -14,7 +14,7 @@
   <tbody>
     <% @weather_locations.each do |weather_location| %>
       <tr>
-        <td><%= weather_location.weather_grid %></td>
+        <td><%= weather_location.weather_grid.name %></td>
         <td><%= weather_location.city %></td>
         <td><%= link_to 'Show', weather_location %></td>
         <td><%= link_to 'Edit', edit_weather_location_path(weather_location) %></td>
