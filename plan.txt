@@ -4,4 +4,10 @@ Step 1:
  -- if current_user.admin?
         # do something
     end
+
+Step 1 - done
+
+################################################################################
+
+Step 2:
 - Add Rails Admin gem for administrators
