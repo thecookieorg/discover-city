@@ -9,6 +9,19 @@
 <body>
 
 <%= render 'layouts/nav' %>
+<% flash.each do |type, content| %>
+    <% if content.respond_to?('each') 
+        content.each do |item| %>
+            <%= render 'layouts/flash', 
+                type: type,
+                content: item %>
+        <% end %>
+    <% else %>
+        <%= render 'layouts/flash', 
+                type: type,
+                content: content %>
+    <% end %>
+<% end %>
 <%= yield %>
 
 </body>

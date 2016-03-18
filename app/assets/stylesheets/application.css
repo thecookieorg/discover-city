@@ -13,3 +13,9 @@
  *= require_tree .
  *= require_self
  */
+
+.alert{
+    z-index: 999;
+    position: fixed;
+    width: 100%;
+}
