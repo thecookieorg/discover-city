@@ -11,3 +11,14 @@ Step 1 - done
 
 Step 2:
 - Add Rails Admin gem for administrators
+
+Step 2 - done
+
+################################################################################
+
+Step 3:
+-- Add user dashboard controller
+- Add 'About' section to the website:
+    -- about vancouver
+    -- history of vancouver
+    -- culture of vancouver (museums, parks, etc.)
