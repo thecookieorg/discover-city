@@ -1,5 +1,6 @@
 class WeatherGridsController < ApplicationController
   require 'forecast_io'
+  load_and_authorize_resource
   before_action :set_weather_grid, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
   # GET /weather_grids

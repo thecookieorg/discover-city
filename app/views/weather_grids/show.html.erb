@@ -1,21 +1,13 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Name:</strong>
-  
-</p>
-
-<p>
-  <strong>User:</strong>
-  <%= @weather_grid.user %>
-</p>
-
-<%= link_to 'Edit', edit_weather_grid_path(@weather_grid) %> |
-<%= link_to 'Back', weather_grids_path %>
-
 <div class="container">
 <div class="row">
   <div class="col-md-12">
+    <% if can? :update, @weather_grid %>
+      <%= link_to 'Edit', edit_weather_grid_path(@weather_grid), class: "btn btn-warning" %>
+    <% end %>
+    <%= link_to 'Back', dashboards_index_path, class: "btn btn-default" %>
+  </div><!-- end col md 12 -->
+  
+  <div class="col-md-12" style="margin-top: 20px;">
     <div class="panel panel-success">
       <div class="panel-heading">
         <h3 class="panel-title"><%= @weather_grid.name %></h3>
@@ -40,19 +32,11 @@
               <p class="lead"><%= weather_info['weather'].daily.summary %></p>
             </div>
           </div>
-          
-          
-          
           <%# weather_info['weather'].city %>
         </div>
-        
-        
-        
-        
-        
       <% end %>
-    </div>
-  </div>
-</div>
+    </div><!-- end panel panel-success -->
+  </div><!-- end col md 12 -->
+</div><!-- end row -->
 <a href="http://forecast.io" target="_blank">Powered by Forecast</a>
-</div>
+</div><!-- end container -->

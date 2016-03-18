@@ -10,9 +10,13 @@ class Ability
          can :dashboard
          can :manage, :all
          can :manage, Phone
+         can :manage, WeatherGrid
+         can :manage, WeatherLocation
        else
          can :read, :all
          can :read, Phone
+         can :read, WeatherGrid
+         can :read, WeatherLocation
        end
     #
     # The first argument to `can` is the action you are giving the user

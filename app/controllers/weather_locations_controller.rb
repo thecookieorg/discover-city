@@ -1,4 +1,5 @@
 class WeatherLocationsController < ApplicationController
+  load_and_authorize_resource
   before_action :set_weather_location, only: [:show, :edit, :update, :destroy]
 
   # GET /weather_locations

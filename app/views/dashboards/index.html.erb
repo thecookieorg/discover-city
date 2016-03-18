@@ -1,2 +1,32 @@
-<h1>Dashboards#index</h1>
-<p>Find me in app/views/dashboards/index.html.erb</p>
+<div class="container">
+<div class="row">
+    <div class="col-md-12">
+        <h1>My Dashboard</h1>            
+    </div><!-- end col md 12 -->
+</div><!-- end row -->
+
+<div class="row" style="margin-top: 30px;">
+    <div class="col-md-3">
+        <% @weather_grids.each do |weather_grid| %>
+            <div class="panel panel-default">
+              <div class="panel-heading">Weather Forecast</div>
+              <div class="panel-body">
+                <%= link_to weather_grid do %>
+                    <i class="fa fa-sun-o"></i> Current Weather Forecast
+                <% end %>
+              </div>
+            </div>
+        <% end %>    
+    </div><!-- end col md 3 -->
+    <div class="col-md-3">
+        <div class="panel panel-default">
+            <div class="panel-heading">Police, Fire, Hospitals, ...</div>
+            <div class="panel-body">
+                <%= link_to phones_path do %>
+                    <i class="fa fa-phone"></i> Show Me Emergency Numbers
+                <% end %>
+            </div>
+        </div>
+    </div><!-- end col md 3 -->
+</div> <!-- end row -->
+</div> <!-- end container -->
