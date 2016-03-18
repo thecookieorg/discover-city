@@ -11,7 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160318170311) do
+ActiveRecord::Schema.define(version: 20160318204621) do
+
+  create_table "phones", force: :cascade do |t|
+    t.string   "name"
+    t.string   "phone_number"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "",    null: false
@@ -31,5 +38,25 @@ ActiveRecord::Schema.define(version: 20160318170311) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+
+  create_table "weather_grids", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "weather_grids", ["user_id"], name: "index_weather_grids_on_user_id"
+
+  create_table "weather_locations", force: :cascade do |t|
+    t.integer  "weather_grid_id"
+    t.string   "city"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.float    "latitude"
+    t.float    "longitude"
+  end
+
+  add_index "weather_locations", ["weather_grid_id"], name: "index_weather_locations_on_weather_grid_id"
 
 end

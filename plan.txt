@@ -24,3 +24,7 @@ Step 3:
     -- culture of vancouver (museums, parks, etc.)
 -- Add Logo
 - Add font-awesome
+
+Step 3: done
+
+################################################################################

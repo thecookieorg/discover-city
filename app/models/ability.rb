@@ -9,8 +9,10 @@ class Ability
          can :access, :rails_admin   # grant access to rails_admin
          can :dashboard
          can :manage, :all
+         can :manage, Phone
        else
          can :read, :all
+         can :read, Phone
        end
     #
     # The first argument to `can` is the action you are giving the user

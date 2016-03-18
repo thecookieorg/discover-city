@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :weather_locations
+  resources :weather_grids
+  resources :phones
   get 'info/about'
 
   get 'info/history'
