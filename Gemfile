@@ -45,6 +45,7 @@ group :development do
   gem 'spring'
 end
 
+gem "twitter-bootstrap-rails"
 gem 'simple_form'
 gem 'devise'
 gem 'cancancan', '~> 1.10'
