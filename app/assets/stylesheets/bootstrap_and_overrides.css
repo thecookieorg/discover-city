@@ -5893,7 +5893,7 @@ button.close {
   -webkit-overflow-scrolling: touch;
   outline: 0;
 }
-.modal.fade .modal-dialog {
+.modal.fade .modal-dialog, .modal-ordering {
   -webkit-transform: translate(0, -25%);
   -ms-transform: translate(0, -25%);
   -o-transform: translate(0, -25%);
@@ -5902,7 +5902,7 @@ button.close {
   -o-transition: -o-transform 0.3s ease-out;
   transition: transform 0.3s ease-out;
 }
-.modal.in .modal-dialog {
+.modal.in .modal-dialog, .modal-ordering {
   -webkit-transform: translate(0, 0);
   -ms-transform: translate(0, 0);
   -o-transform: translate(0, 0);
@@ -5912,7 +5912,7 @@ button.close {
   overflow-x: hidden;
   overflow-y: auto;
 }
-.modal-dialog {
+.modal-dialog, .modal-ordering {
   position: relative;
   width: auto;
   margin: 10px;
@@ -5987,6 +5987,11 @@ button.close {
   .modal-dialog {
     /*width: 600px;*/
     width: 222px;
+    margin: 30px auto;
+  }
+  .modal-ordering {
+    /*width: 600px;*/
+    width: 100%;
     margin: 30px auto;
   }
   .modal-content {
@@ -7079,4 +7084,14 @@ input[type="checkbox"] {
 }
 .modal .close {
   color: #222222;
+}
+
+
+
+
+/* #############################################################
+                          CUSTOM CSS
+*/
+.bigger-font{
+  font-size: 1.3em !important;
 }

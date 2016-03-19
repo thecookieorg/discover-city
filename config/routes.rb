@@ -3,18 +3,16 @@ Rails.application.routes.draw do
   resources :weather_locations
   resources :weather_grids
   resources :phones
+  
   get 'info/about'
-
   get 'info/history'
-
   get 'info/culture'
-
   get 'dashboards/index'
-
-  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   get 'pages/index'
-
-  devise_for :users
+  
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+  
+  devise_for :users, :controllers => { registrations: 'registrations' }
   
   scope :users do
     root :to => 'dashboards#index', :as => :user_root

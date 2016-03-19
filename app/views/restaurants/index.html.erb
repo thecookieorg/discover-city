@@ -26,19 +26,19 @@
                 <%= restaurant.address %>
               </p>    
             </div>
-            <div class="col-sm-3">
+            <div class="col-sm-2">
               <p>
                 <%= link_to "http://#{restaurant.website}", target: "_blank" do %>
                   <i class="fa fa-globe"></i> Website
                 <% end %>
               </p>
             </div>
-            <div class="col-sm-3">
+            <div class="col-sm-2">
               <!-- Button trigger modal -->
               <p class="btn btn-link" data-toggle="modal" data-target="#myModal" style="padding: 0px">
                 <i class="fa fa-clock-o"></i> Hours
               </p>
-              <div class="modal" id="myModal">
+              <div class="modal fade" id="myModal">
                 <div class="modal-dialog">
                   <div class="modal-content">
                     <div class="modal-header">
@@ -61,29 +61,51 @@
                   </div>
                 </div>
               </div>
-            </div>
+            </div><!-- end col-md-3 -->
+            <div class="col-md-2">
+                  <%= link_to "http://facebook.com/#{restaurant.facebook}", target: "_blank" do %>
+                    <i class="fa fa-facebook-official bigger-font"></i>
+                  <% end %> | 
+                  <%= link_to "http://twitter.com/#{restaurant.twitter}", target: "_blank" do %>
+                    <i class="fa fa-twitter-square bigger-font"></i>
+                  <% end %> |
+                  <%= link_to "http://instagram.com/#{restaurant.instagram}", target: "_blank" do %>
+                    <i class="fa fa-instagram bigger-font"></i>
+                  <% end %>
+            </div><!-- end col-md-2 -->
+            <div class="col-md-2">
+              <% if restaurant.order_online.present? %>
+                <!-- Button trigger modal -->
+                <p class="btn btn-link" data-toggle="modal" data-target="#orderOnline" style="padding: 0px">
+                  <i class="fa fa-shopping-cart"></i> Order Online
+                </p>
+                
+                <!-- Modal -->
+                <div class="modal fade" id="orderOnline" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                  <div class="modal-ordering" role="document">
+                    <div class="modal-content"  style="width:100% !important;">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">Order from <%= restaurant.name %></h4>
+                      </div>
+                      <div class="modal-body">
+                        <iframe width="100%" height="1100" src="<%= restaurant.order_online %>" frameborder="0" allowfullscreen>
+                        </iframe>
+                      </div>
+                    </div>
+                  </div>
+                </div><!-- end modal-->
+              <% else %>
+                <p>No online ordering available</p>
+              <% end %>
+            </div><!-- end col-md-2 -->
           </div>
-          
-          
-            <td><%= restaurant.order_online %></td>
-            
-            <td><%= restaurant.facebook %></td>
-            <td><%= restaurant.twitter %></td>
-            <td><%= restaurant.instagram %></td>
             <td><%= link_to 'Show', restaurant %></td>
-            <td><%= link_to 'Edit', edit_restaurant_path(restaurant) %></td>
-            <td><%= link_to 'Destroy', restaurant, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-          
         <% end %>
-      </div>
-    </div>
-  </div>
+      </div><!-- end panel-body -->
+    </div><!-- end panel panel-warning-->
+  </div><!-- end row -->
 </div><!-- end container -->
-
-
-
-
-<%= link_to 'New Restaurant', new_restaurant_path %>
 
 <script>
 handler = Gmaps.build('Google');
