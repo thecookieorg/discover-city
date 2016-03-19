@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :restaurants
   resources :weather_locations
   resources :weather_grids
   resources :phones
