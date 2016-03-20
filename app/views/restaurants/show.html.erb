@@ -12,10 +12,6 @@
 }(document, 'script', 'facebook-jssdk'));</script>
 
 
-
-
-
-
 <div class="container">
   <div class="row">
     <div class="col-md-12">
@@ -32,6 +28,8 @@
     <div class="col-md-3">
       <p><strong>Cuisines:</strong><%= @restaurant.cuisines %></p>
       <p><strong>Cost for two:</strong><%= @restaurant.cost_for_two %></p>
+      <p><strong>Upwotes:</strong> <%= @restaurant.get_upvotes.size %></p>
+      <p><strong>Downvotes:</strong> <%= @restaurant.get_downvotes.size %></p>
       <p><strong>Highlights:</strong>-takeout, -delivery, -what ever it is => ADD THIS TO REST MODEL</p>
     </div><!-- end col-md-3 -->
     <div class="col-md-3">

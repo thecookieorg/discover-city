@@ -54,7 +54,7 @@ gem "font-awesome-rails"
 gem 'geocoder'
 gem 'forecast_io'
 gem 'gmaps4rails'
-gem 'gravatarify', '~> 3.0.0'
+#gem 'gravatarify', '~> 3.0.0'
 gem 'carrierwave', github:'carrierwaveuploader/carrierwave'
 gem 'mini_magick', '~> 4.3'
 gem 'acts_as_votable', '~> 0.10.0'

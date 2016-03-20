@@ -18,7 +18,7 @@
           <h3>
               <%= image_tag restaurant.logo.thumb.url %> <%= restaurant.name %> | <%= link_to "tel:#{restaurant.phone_number}" do %>
               <i class="fa fa-phone"></i> <%= restaurant.phone_number %> 
-            <% end %> | <%= link_to "http://#{restaurant.website}", target: "_blank" do %><i class="fa fa-globe"></i> Website<% end %> | <%= link_to 'Details', restaurant, class: "btn btn-success" %>
+            <% end %> | <%= link_to "http://#{restaurant.website}", target: "_blank" do %><i class="fa fa-globe"></i> Website<% end %> | <%= link_to 'Details', restaurant, class: "btn btn-primary" %>
           </h3>
           
             
@@ -42,14 +42,14 @@
               <div class="caption" style="text-align:center;">
 
             <%= link_to like_restaurant_path(restaurant),  class: "like", method: :put do %>
-              <button type="button" class="btn btn-info" aria-label="Left Align">
+              <button type="button" class="btn btn-success" aria-label="Left Align">
                 <i class="fa fa-thumbs-o-up"></i>
                 <span class="badge"><%= restaurant.get_upvotes.size %></span>
               </button>
             <% end %>
 
             <%= link_to dislike_restaurant_path(restaurant), class: "like", method: :put do %>
-              <button type="button" class="btn btn-info" aria-label="Left Align"> 
+              <button type="button" class="btn btn-danger" aria-label="Left Align"> 
                 <i class="fa fa-thumbs-o-down"></i>
                 <span class="badge"><%= restaurant.get_downvotes.size %></span>
               </button>  
