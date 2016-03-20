@@ -54,3 +54,4 @@ gem "font-awesome-rails"
 gem 'geocoder'
 gem 'forecast_io'
 gem 'gmaps4rails'
+gem 'gravatarify', '~> 3.0.0'
