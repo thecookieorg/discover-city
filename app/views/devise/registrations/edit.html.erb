@@ -13,6 +13,9 @@
                 <%= f.input :first_name, required: true, autofocus: true %>
                 <%= f.input :last_name, required: true %>
                 <%= f.input :username, required: true %>
+                <%= f.input :age, required: true %>
+                <%= f.input :gender, required: true %>
+                <%= f.input :bio, required: true %>
                 <%= f.input :email, required: true %>
             
                 <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
