@@ -21,6 +21,16 @@ class RestaurantsController < ApplicationController
   # GET /restaurants/1
   # GET /restaurants/1.json
   def show
+    @restaurants = Restaurant.find(params[:id])
+    @hash = Gmaps4rails.build_markers(@restaurants) do |restaurant, marker|
+      marker.lat restaurant.latitude
+      marker.lng restaurant.longitude
+      marker.infowindow "<h4>#{restaurant.name}</h4><p><b>Address:</b> #{restaurant.address}</p><p><b>Phone:</b> #{restaurant.phone_number}</p><p><b>Monday:</b> #{restaurant.monday_hours}</p><p><b>Tuesday:</b> #{restaurant.tuesday_hours}</p><p><b>Wednesday:</b> #{restaurant.wednesday_hours}</p><p><b>Thursday:</b> #{restaurant.thursday_hours}</p><p><b>Friday:</b> #{restaurant.friday_hours}</p><p><b>Saturday:</b> #{restaurant.saturday_hours}</p><p><b>Sunday:</b> #{restaurant.sunday_hours}</p>"
+      marker.json({
+        name:     restaurant.name,
+        address: restaurant.address
+      })
+    end
   end
 
   # GET /restaurants/new
@@ -74,6 +84,8 @@ class RestaurantsController < ApplicationController
   end
 
   private
+   
+    
     # Use callbacks to share common setup or constraints between actions.
     def set_restaurant
       @restaurant = Restaurant.find(params[:id])
@@ -81,6 +93,6 @@ class RestaurantsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def restaurant_params
-      params.require(:restaurant).permit(:name, :address, :description, :phone_number, :website, :order_online, :monday_hours, :tuesday_hours, :wednesday_hours, :thursday_hours, :friday_hours, :saturday_hours, :sunday_hours, :facebook, :twitter, :instagram, :latitude, :longitude, :logo)
+      params.require(:restaurant).permit(:name, :address, :description, :phone_number, :website, :order_online, :monday_hours, :tuesday_hours, :wednesday_hours, :thursday_hours, :friday_hours, :saturday_hours, :sunday_hours, :facebook, :twitter, :instagram, :latitude, :longitude, :logo, :cuisines, :cost_for_two)
     end
 end

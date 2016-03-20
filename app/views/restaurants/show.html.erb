@@ -1,79 +1,117 @@
-<p id="notice"><%= notice %></p>
+<script src="//maps.google.com/maps/api/js?v=3.18&sensor=false&client=&key=&libraries=geometry&language=&hl=&region="></script> 
+<script src="//google-maps-utility-library-v3.googlecode.com/svn/tags/markerclustererplus/2.0.14/src/markerclusterer_packed.js"></script>
+<script src='//google-maps-utility-library-v3.googlecode.com/svn/tags/infobox/1.1.9/src/infobox_packed.js' type='text/javascript'></script> <!-- only if you need custom infoboxes -->
 
-<p>
-  <strong>Name:</strong>
-  <%= @restaurant.name %>
-</p>
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5&appId=211603978873320";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
 
-<p>
-  <strong>Address:</strong>
-  <%= @restaurant.address %>
-</p>
 
-<p>
-  <strong>Phone number:</strong>
-  <%= @restaurant.phone_number %>
-</p>
 
-<p>
-  <strong>Website:</strong>
-  <%= @restaurant.website %>
-</p>
 
-<p>
-  <strong>Order online:</strong>
-  <%= @restaurant.order_online %>
-</p>
 
-<p>
-  <strong>Monday hours:</strong>
-  <%= @restaurant.monday_hours %>
-</p>
 
-<p>
-  <strong>Tuesday hours:</strong>
-  <%= @restaurant.tuesday_hours %>
-</p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <%= link_to 'Back', restaurants_path, class: "btn btn-default" %>  
+    </div><!-- end col-md-12 -->
+  </div><!-- end row -->
+  <div class="row" style="margin-top: 50px;">
+    <div class="col-md-12">
+      <h1><%= image_tag @restaurant.logo.thumb.url %> <%= @restaurant.name %> <small>| <%= link_to "tel:#{@restaurant.phone_number}" do %><i class="fa fa-phone"></i> <%= @restaurant.phone_number %><% end %> | <%= link_to "http://#{@restaurant.website}", target: "_blank" do %><i class="fa fa-globe"></i> Website<% end %></small></h1>
+      <hr>
+     </div>
+  </div><!-- end row -->
+  <div class="row">
+    <div class="col-md-3">
+      <p><strong>Cuisines:</strong><%= @restaurant.cuisines %></p>
+      <p><strong>Cost for two:</strong><%= @restaurant.cost_for_two %></p>
+      <p><strong>Highlights:</strong>-takeout, -delivery, -what ever it is => ADD THIS TO REST MODEL</p>
+    </div><!-- end col-md-3 -->
+    <div class="col-md-3">
+      <p><strong>Monday:</strong> <%= @restaurant.monday_hours %></p>
+      <p><strong>Tuesday:</strong> <%= @restaurant.tuesday_hours %></p>
+      <p><strong>Wednesday:</strong> <%= @restaurant.wednesday_hours %></p>
+      <p><strong>Thursday:</strong> <%= @restaurant.thursday_hours %></p>
+      <p><strong>Friday:</strong> <%= @restaurant.friday_hours %></p>
+      <p><strong>Saturday:</strong> <%= @restaurant.saturday_hours %></p>
+      <p><strong>Sunday:</strong> <%= @restaurant.sunday_hours %></p>
+    </div><!-- end col-md-3 -->
+    <div class="col-md-6">
+        <div id="map" style='width: 100%; height: 300px;'></div>
+        <h3><%= @restaurant.address %></h3>
+    </div>
+  </div><!-- end row -->
+  <div class="row" style="margin-top: 50px;">
+     
+      <div class="row">
+        <div class="col-md-4">
+          <%= content_tag :div, class: "fb-page", "data-href": "https://www.facebook.com/#{@restaurant.facebook}/", "data-tabs": "timeline", "data-small-header": false, "data-adapt-container-width": true, "data-hide-cover": false, "data-show-facepile": true do -%>
+            <div class="fb-xfbml-parse-ignore"></div>
+          <% end -%>
+        </div><!-- end col-md-6 -->
+        <div class="col-md-4">
+          <img src="http://www.thesiteshed.com/wp-content/uploads/2016/02/Follow-us-on-Instagram.png" class="img-responsive">
+          <img src="http://www.echternach.lu/followusontwitterlogo.jpg?FileID=imagettes%2Ffollowusontwitterlogo.jpg" class="img-responsive">
+          <%= link_to "http://twitter.com/#{@restaurant.twitter}", target: "_blank" do %>
+                    <i class="fa fa-twitter-square bigger-font"></i>
+                  <% end %> |
+                  <%= link_to "http://instagram.com/#{@restaurant.instagram}", target: "_blank" do %>
+                    <i class="fa fa-instagram bigger-font"></i>
+                  <% end %>
+        </div><!-- end col-md-6 -->
+      </div><!-- end row-->
+      
+      
+      <div class="row" style="margin-top: 100px;">
+        <% if @restaurant.order_online.present? %>
+                <!-- Button trigger modal -->
+                <p class="btn btn-link" data-toggle="modal" data-target="#orderOnline" style="padding: 0px">
+                  <i class="fa fa-shopping-cart"></i> Order Online
+                </p>
+                
+                <!-- Modal -->
+                <div class="modal fade" id="orderOnline" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                  <div class="modal-ordering" role="document">
+                    <div class="modal-content"  style="width:100% !important;">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">Order from <%= @restaurant.name %></h4>
+                      </div>
+                      <div class="modal-body">
+                        <iframe width="100%" height="1100" src="<%= @restaurant.order_online %>" frameborder="0" allowfullscreen>
+                        </iframe>
+                      </div>
+                    </div>
+                  </div>
+                </div><!-- end modal-->
+              <% else %>
+                <p>No online ordering available</p>
+              <% end %>
+      </div>
+      
+      
+      
+      
+  </div><!-- end row -->
+</div><!-- end container -->
 
-<p>
-  <strong>Wednesday hours:</strong>
-  <%= @restaurant.wednesday_hours %>
-</p>
 
-<p>
-  <strong>Thursday hours:</strong>
-  <%= @restaurant.thursday_hours %>
-</p>
 
-<p>
-  <strong>Friday hours:</strong>
-  <%= @restaurant.friday_hours %>
-</p>
 
-<p>
-  <strong>Saturday hours:</strong>
-  <%= @restaurant.saturday_hours %>
-</p>
 
-<p>
-  <strong>Sunday hours:</strong>
-  <%= @restaurant.sunday_hours %>
-</p>
 
-<p>
-  <strong>Facebook:</strong>
-  <%= @restaurant.facebook %>
-</p>
-
-<p>
-  <strong>Twitter:</strong>
-  <%= @restaurant.twitter %>
-</p>
-
-<p>
-  <strong>Instagram:</strong>
-  <%= @restaurant.instagram %>
-</p>
-
-<%= link_to 'Edit', edit_restaurant_path(@restaurant) %> |
-<%= link_to 'Back', restaurants_path %>
+<script>
+handler = Gmaps.build('Google');
+handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
+  markers = handler.addMarkers(<%=raw @hash.to_json %>);
+  handler.bounds.extendWith(markers);
+  handler.fitMapToBounds();
+});
+</script>
