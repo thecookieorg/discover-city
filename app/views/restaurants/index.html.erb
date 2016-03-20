@@ -15,7 +15,8 @@
       </div>
       <div class="panel-body">
          <% @restaurants.each do |restaurant| %>
-          <h3><%= restaurant.name %> | <%= link_to "tel:#{restaurant.phone_number}" do %>
+          <h3>
+              <%= image_tag restaurant.logo.thumb.url %> <%= restaurant.name %> | <%= link_to "tel:#{restaurant.phone_number}" do %>
               <i class="fa fa-phone"></i> <%= restaurant.phone_number %>
             <% end %>
           </h3>

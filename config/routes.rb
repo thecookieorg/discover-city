@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :weather_locations
   resources :weather_grids
   resources :phones
-  resources :users, only: [:show]
+  
   
   get 'info/about'
   get 'info/history'
@@ -21,6 +21,9 @@ Rails.application.routes.draw do
   end
   
   root 'pages#index'
+  
+  resources :users, only: [:show]
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

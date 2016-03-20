@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160320090949) do
+ActiveRecord::Schema.define(version: 20160320103939) do
 
   create_table "phones", force: :cascade do |t|
     t.string   "name"
@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(version: 20160320090949) do
     t.float    "longitude"
     t.text     "description"
     t.integer  "user_id"
+    t.string   "logo"
   end
 
   add_index "restaurants", ["user_id"], name: "index_restaurants_on_user_id"

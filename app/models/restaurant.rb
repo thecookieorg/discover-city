@@ -1,4 +1,6 @@
 class Restaurant < ActiveRecord::Base
+    mount_uploader :logo, LogoUploader
+    
     belongs_to :user
     
     geocoded_by :address
