@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :liquor_stores
   resources :restaurants
   resources :weather_locations
   resources :weather_grids

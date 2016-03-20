@@ -1,0 +1,33 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  address: MyString
+  phone: MyString
+  website: MyString
+  hours_monday: MyString
+  hours_tuesday: MyString
+  hours_wednesday: MyString
+  hours_thursday: MyString
+  hours_friday: MyString
+  hours_saturday: MyString
+  hours_sunday: MyString
+  delivery: MyString
+  latitude: 1.5
+  longitude: 1.5
+
+two:
+  name: MyString
+  address: MyString
+  phone: MyString
+  website: MyString
+  hours_monday: MyString
+  hours_tuesday: MyString
+  hours_wednesday: MyString
+  hours_thursday: MyString
+  hours_friday: MyString
+  hours_saturday: MyString
+  hours_sunday: MyString
+  delivery: MyString
+  latitude: 1.5
+  longitude: 1.5

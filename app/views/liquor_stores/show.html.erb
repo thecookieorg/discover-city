@@ -19,50 +19,48 @@
 <div class="container">
   <div class="row">
     <div class="col-md-12">
-      <%= link_to 'Back', restaurants_path, class: "btn btn-default" %>  
+      <%= link_to 'Back', liquor_stores_path, class: "btn btn-default" %>  
     </div><!-- end col-md-12 -->
   </div><!-- end row -->
   <div class="row" style="margin-top: 50px;">
     <div class="col-md-12">
-      <h1><%= image_tag @restaurant.logo.thumb.url %> <%= @restaurant.name %> <small>| <%= link_to "tel:#{@restaurant.phone_number}" do %><i class="fa fa-phone"></i> <%= @restaurant.phone_number %><% end %> | <%= link_to "http://#{@restaurant.website}", target: "_blank" do %><i class="fa fa-globe"></i> Website<% end %></small></h1>
+      <h1><%= image_tag @liquor_store.logo.thumb.url %> <%= @liquor_store.name %> <small>| <%= link_to "tel:#{@liquor_store.phone}" do %><i class="fa fa-phone"></i> <%= @liquor_store.phone %><% end %> | <%= link_to "http://#{@liquor_store.website}", target: "_blank" do %><i class="fa fa-globe"></i> Website<% end %></small></h1>
       <hr>
      </div>
   </div><!-- end row -->
   <div class="row">
     <div class="col-md-3">
-      <p><strong>Cuisines:</strong><%= @restaurant.cuisines %></p>
-      <p><strong>Cost for two:</strong><%= @restaurant.cost_for_two %></p>
-      <p><strong>Highlights:</strong>-takeout, -delivery, -what ever it is => ADD THIS TO REST MODEL</p>
+      <p><strong>Delivery options:</strong> <%= @liquor_store.delivery %></p>
     </div><!-- end col-md-3 -->
     <div class="col-md-3">
-      <p><strong>Monday:</strong> <%= @restaurant.monday_hours %></p>
-      <p><strong>Tuesday:</strong> <%= @restaurant.tuesday_hours %></p>
-      <p><strong>Wednesday:</strong> <%= @restaurant.wednesday_hours %></p>
-      <p><strong>Thursday:</strong> <%= @restaurant.thursday_hours %></p>
-      <p><strong>Friday:</strong> <%= @restaurant.friday_hours %></p>
-      <p><strong>Saturday:</strong> <%= @restaurant.saturday_hours %></p>
-      <p><strong>Sunday:</strong> <%= @restaurant.sunday_hours %></p>
+      <p><strong>Monday:</strong> <%= @liquor_store.hours_monday %></p>
+      <p><strong>Tuesday:</strong> <%= @liquor_store.hours_tuesday %></p>
+      <p><strong>Wednesday:</strong> <%= @liquor_store.hours_wednesday %></p>
+      <p><strong>Thursday:</strong> <%= @liquor_store.hours_thursday %></p>
+      <p><strong>Friday:</strong> <%= @liquor_store.hours_friday %></p>
+      <p><strong>Saturday:</strong> <%= @liquor_store.hours_saturday %></p>
+      <p><strong>Sunday:</strong> <%= @liquor_store.hours_sunday %></p>
     </div><!-- end col-md-3 -->
     <div class="col-md-6">
         <div id="custom_style" style='width: 100%; height: 300px;'></div>
-        <h3><%= @restaurant.address %></h3>
+        <h3><%= @liquor_store.address %></h3>
     </div>
   </div><!-- end row -->
   <div class="row" style="margin-top: 50px;">
      
       <div class="row">
         <div class="col-md-4">
-          <%= content_tag :div, class: "fb-page", "data-href": "https://www.facebook.com/#{@restaurant.facebook}/", "data-tabs": "timeline", "data-small-header": false, "data-adapt-container-width": true, "data-hide-cover": false, "data-show-facepile": true do -%>
+          <%= content_tag :div, class: "fb-page", "data-href": "https://www.facebook.com/#{@liquor_store.facebook}/", "data-tabs": "timeline", "data-small-header": false, "data-adapt-container-width": true, "data-hide-cover": false, "data-show-facepile": true do -%>
             <div class="fb-xfbml-parse-ignore"></div>
           <% end -%>
         </div><!-- end col-md-4 -->
         <div class="col-md-4">
           <img src="http://www.thesiteshed.com/wp-content/uploads/2016/02/Follow-us-on-Instagram.png" class="img-responsive">
           <img src="http://www.echternach.lu/followusontwitterlogo.jpg?FileID=imagettes%2Ffollowusontwitterlogo.jpg" class="img-responsive">
-          <%= link_to "http://twitter.com/#{@restaurant.twitter}", target: "_blank" do %>
+          <%= link_to "http://twitter.com/#{@liquor_store.twitter}", target: "_blank" do %>
                     <i class="fa fa-twitter-square bigger-font"></i>
                   <% end %> |
-                  <%= link_to "http://instagram.com/#{@restaurant.instagram}", target: "_blank" do %>
+                  <%= link_to "http://instagram.com/#{@liquor_store.instagram}", target: "_blank" do %>
                     <i class="fa fa-instagram bigger-font"></i>
                   <% end %>
         </div><!-- end col-md-4 -->
@@ -70,7 +68,7 @@
       
       
       <div class="row" style="margin-top: 100px;">
-        <% if @restaurant.order_online.present? %>
+        <% if @liquor_store.order_online.present? %>
                 <!-- Button trigger modal -->
                 <p class="btn btn-link" data-toggle="modal" data-target="#orderOnline" style="padding: 0px">
                   <i class="fa fa-shopping-cart"></i> Order Online
@@ -82,10 +80,10 @@
                     <div class="modal-content"  style="width:100% !important;">
                       <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title" id="myModalLabel">Order from <%= @restaurant.name %></h4>
+                        <h4 class="modal-title" id="myModalLabel">Order from <%= @liquor_store.name %></h4>
                       </div>
                       <div class="modal-body">
-                        <iframe width="100%" height="1100" src="<%= @restaurant.order_online %>" frameborder="0" allowfullscreen>
+                        <iframe width="100%" height="1100" src="<%= @liquor_store.order_online %>" frameborder="0" allowfullscreen>
                         </iframe>
                       </div>
                     </div>
@@ -97,10 +95,6 @@
       </div>
   </div><!-- end row -->
 </div><!-- end container -->
-
-
-
-
 
 
 <script>

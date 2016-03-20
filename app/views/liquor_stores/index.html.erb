@@ -11,31 +11,31 @@
   <div class="row" style="margin-top: 50px;">
     <div class="panel panel-primary">
       <div class="panel-heading">
-        <h3 class="panel-title">Local Restaurants</h3>
+        <h3 class="panel-title">Local Liquor Stores</h3>
       </div>
       <div class="panel-body text-center">
-         <% @restaurants.each do |restaurant| %>
+         <% @liquor_stores.each do |liquor_store| %>
           <h3>
-              <%= image_tag restaurant.logo.thumb.url %> <%= restaurant.name %> | <%= link_to "tel:#{restaurant.phone_number}" do %>
-              <i class="fa fa-phone"></i> <%= restaurant.phone_number %> 
-            <% end %> | <%= link_to "http://#{restaurant.website}", target: "_blank" do %><i class="fa fa-globe"></i> Website<% end %> | <%= link_to 'Details', restaurant, class: "btn btn-success" %>
+              <%= image_tag liquor_store.logo.thumb.url %> <%= liquor_store.name %> | <%= link_to "tel:#{liquor_store.phone}" do %>
+              <i class="fa fa-phone"></i> <%= liquor_store.phone %> 
+            <% end %> | <%= link_to "http://#{liquor_store.website}", target: "_blank" do %><i class="fa fa-globe"></i> Website<% end %> | <%= link_to 'Details', liquor_store, class: "btn btn-success" %>
           </h3>
           
             
             <div class="row" style="margin-bottom: 20px;">
               <div class="col-md-12 text-center">
-                <small><%= restaurant.address %></small>
+                <small><%= liquor_store.address %></small>
               </div><!-- end col-md-12 -->
             </div> <!-- end row -->
             <div class="row">
               <div class="col-md-12 text-center">
-                <small><strong>Monday:</strong> <%= restaurant.monday_hours %> | 
-                       <strong>Tuesday:</strong> <%= restaurant.tuesday_hours %> | 
-                       <strong>Wednesday:</strong> <%= restaurant.wednesday_hours %> | 
-                       <strong>Thursday:</strong> <%= restaurant.thursday_hours %> | 
-                       <strong>Friday:</strong> <%= restaurant.friday_hours %> | 
-                       <strong>Saturday:</strong> <%= restaurant.saturday_hours %> | 
-                       <strong>Sunday:</strong> <%= restaurant.sunday_hours %></small>
+                <small><strong>Monday:</strong> <%= liquor_store.hours_monday %> | 
+                       <strong>Tuesday:</strong> <%= liquor_store.hours_tuesday %> | 
+                       <strong>Wednesday:</strong> <%= liquor_store.hours_wednesday %> | 
+                       <strong>Thursday:</strong> <%= liquor_store.hours_thursday %> | 
+                       <strong>Friday:</strong> <%= liquor_store.hours_friday %> | 
+                       <strong>Saturday:</strong> <%= liquor_store.hours_saturday %> | 
+                       <strong>Sunday:</strong> <%= liquor_store.hours_sunday %></small>
               </div><!-- end col-md-12 -->
             </div><!-- end row -->
             <div class="row">
@@ -50,7 +50,7 @@
   </div><!-- end row -->
   <div class="row">
     <div class="col-md-12 text-center">
-      <%= paginate @restaurants, :window => 2 %>
+      <%= paginate @liquor_stores, :window => 2 %>
     </div><!-- end col-md-12 -->
   </div><!-- end row -->
 </div><!-- end container -->

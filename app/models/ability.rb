@@ -13,12 +13,14 @@ class Ability
          can :manage, WeatherGrid
          can :manage, WeatherLocation
          can :manage, Restaurant
+         can :manage, LiquorStore
        else
          can :read, :all
          can :read, Phone
          can :read, WeatherGrid
          can :read, WeatherLocation
          can :read, Restaurant
+         can :read, LiquorStore
        end
     #
     # The first argument to `can` is the action you are giving the user

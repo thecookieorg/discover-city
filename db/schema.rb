@@ -11,7 +11,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160320105338) do
+ActiveRecord::Schema.define(version: 20160320204845) do
+
+  create_table "liquor_stores", force: :cascade do |t|
+    t.string   "name"
+    t.string   "address"
+    t.string   "phone"
+    t.string   "website"
+    t.string   "hours_monday"
+    t.string   "hours_tuesday"
+    t.string   "hours_wednesday"
+    t.string   "hours_thursday"
+    t.string   "hours_friday"
+    t.string   "hours_saturday"
+    t.string   "hours_sunday"
+    t.string   "delivery"
+    t.float    "latitude"
+    t.float    "longitude"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.string   "logo"
+    t.string   "facebook"
+    t.string   "twitter"
+    t.string   "instagram"
+    t.string   "order_online"
+  end
 
   create_table "phones", force: :cascade do |t|
     t.string   "name"
