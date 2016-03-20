@@ -6,7 +6,7 @@ class RestaurantsController < ApplicationController
   # GET /restaurants
   # GET /restaurants.json
   def index
-    @restaurants = Restaurant.all
+    @restaurants = Restaurant.all.paginate(page: params[:page], per_page: 20)
     @hash = Gmaps4rails.build_markers(@restaurants) do |restaurant, marker|
       marker.lat restaurant.latitude
       marker.lng restaurant.longitude
