@@ -1,5 +1,6 @@
 class Restaurant < ActiveRecord::Base
     mount_uploader :logo, LogoUploader
+    acts_as_votable
     
     belongs_to :user
     

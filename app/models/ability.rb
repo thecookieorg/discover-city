@@ -20,6 +20,8 @@ class Ability
          can :read, WeatherGrid
          can :read, WeatherLocation
          can :read, Restaurant
+         can :upvote, Restaurant
+         can :downvote, Restaurant
          can :read, LiquorStore
        end
     #

@@ -1,7 +1,13 @@
 Rails.application.routes.draw do
 
   resources :liquor_stores
-  resources :restaurants
+  resources :restaurants do
+    member do
+      put "like" => "restaurants#upvote"
+      put "dislike" => "restaurants#downvote"
+    end
+  end
+  
   resources :weather_locations
   resources :weather_grids
   resources :phones

@@ -1,12 +1,12 @@
 class RestaurantsController < ApplicationController
   load_and_authorize_resource
   before_action :authenticate_user!
-  before_action :set_restaurant, only: [:show, :edit, :update, :destroy]
+  before_action :set_restaurant, only: [:show, :edit, :update, :destroy, :upvote, :downvote]
 
   # GET /restaurants
   # GET /restaurants.json
   def index
-    @restaurants = Restaurant.all.order("name").page(params[:page]).per(20)
+    @restaurants = Restaurant.all.order(:cached_votes_up => :desc).page(params[:page]).per(20)
     @hash = Gmaps4rails.build_markers(@restaurants) do |restaurant, marker|
       marker.lat restaurant.latitude
       marker.lng restaurant.longitude
@@ -81,6 +81,16 @@ class RestaurantsController < ApplicationController
       format.html { redirect_to restaurants_url, notice: 'Restaurant was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+  
+  def upvote
+    @restaurant.upvote_from current_user
+    redirect_to restaurants_path, notice: 'You rock! Thank you for voting!'
+  end
+
+  def downvote
+    @restaurant.downvote_from current_user
+    redirect_to restaurants_path, notice: 'You rock! Thank you for voting!'
   end
 
   private
