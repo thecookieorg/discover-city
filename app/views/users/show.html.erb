@@ -5,11 +5,7 @@
 
 <div class="col-md-4">
 <%# gravatar_tag @user.email, size: 200 %>
-<% if @user.profile_pic.present? %>
-    <%= image_tag @user.profile_pic.medium.url, class: "img-responsive img-rounded" %>
-<% else %>
-    <%= image_tag 'profile.jpg', class: "img-responsive img-rounded" %>
-<% end %>
+<%= image_tag @user.profile_pic.medium, class: "img-responsive img-rounded" %>
 </div>
 
 <div class="col-md-4">

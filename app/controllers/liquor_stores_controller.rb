@@ -90,7 +90,7 @@ class LiquorStoresController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def liquor_store_params
-      params.require(:liquor_store).permit(:name, :address, :phone, :website, :hours_monday, :hours_tuesday, :hours_wednesday, :hours_thursday, :hours_friday, :hours_saturday, :hours_sunday, :delivery, :latitude, :longitude, :facebook, :twitter, :instagram)
+      params.require(:liquor_store).permit(:name, :address, :phone, :website, :hours_monday, :hours_tuesday, :hours_wednesday, :hours_thursday, :hours_friday, :hours_saturday, :hours_sunday, :delivery, :latitude, :longitude, :facebook, :twitter, :instagram, :logo)
     end
     
     
