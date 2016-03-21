@@ -7,6 +7,8 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   mount_uploader :profile_pic, ProfilePicUploader
+  
+  validates_uniqueness_of :username
          
   #has_many :phones
   has_many :restaurants
