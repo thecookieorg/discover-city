@@ -11,7 +11,35 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160320232407) do
+ActiveRecord::Schema.define(version: 20160321234532) do
+
+  create_table "accommodations", force: :cascade do |t|
+    t.string   "name"
+    t.text     "description"
+    t.string   "price_per_night"
+    t.string   "free_wi_fi"
+    t.string   "air_conditioned"
+    t.string   "breakfast"
+    t.string   "child_friendly"
+    t.string   "airport_shuttle"
+    t.string   "gym"
+    t.string   "parking"
+    t.string   "laundry_service"
+    t.string   "pool"
+    t.string   "restaurant"
+    t.string   "hot_tub"
+    t.string   "smoke_free"
+    t.string   "accessible"
+    t.string   "pets_allowed"
+    t.string   "spa"
+    t.string   "bar"
+    t.float    "latitude"
+    t.float    "longitude"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.string   "address"
+    t.string   "phone"
+  end
 
   create_table "liquor_stores", force: :cascade do |t|
     t.string   "name"

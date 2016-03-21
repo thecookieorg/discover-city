@@ -14,6 +14,7 @@ class Ability
          can :manage, WeatherLocation
          can :manage, Restaurant
          can :manage, LiquorStore
+         can :manage, Accommodation
        else
          can :read, :all
          can :read, Phone
@@ -23,6 +24,7 @@ class Ability
          can :upvote, Restaurant
          can :downvote, Restaurant
          can :read, LiquorStore
+         can :read, Accommodation
        end
     #
     # The first argument to `can` is the action you are giving the user

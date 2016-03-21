@@ -1,0 +1,47 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  description: MyText
+  price_per_night: MyString
+  free_wi_fi: MyString
+  air_conditioned: MyString
+  breakfast: MyString
+  child_friendly: MyString
+  airport_shuttle: MyString
+  gym: MyString
+  parking: MyString
+  laundry_service: MyString
+  pool: MyString
+  restaurant: MyString
+  hot_tub: MyString
+  smoke_free: MyString
+  accessible: MyString
+  pets_allowed: MyString
+  spa: MyString
+  bar: MyString
+  latitude: 1.5
+  longitude: 1.5
+
+two:
+  name: MyString
+  description: MyText
+  price_per_night: MyString
+  free_wi_fi: MyString
+  air_conditioned: MyString
+  breakfast: MyString
+  child_friendly: MyString
+  airport_shuttle: MyString
+  gym: MyString
+  parking: MyString
+  laundry_service: MyString
+  pool: MyString
+  restaurant: MyString
+  hot_tub: MyString
+  smoke_free: MyString
+  accessible: MyString
+  pets_allowed: MyString
+  spa: MyString
+  bar: MyString
+  latitude: 1.5
+  longitude: 1.5

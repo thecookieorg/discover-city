@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :accommodations
   resources :liquor_stores
   resources :restaurants do
     member do
