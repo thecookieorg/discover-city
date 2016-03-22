@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+# ruby '2.0.0'
 gem 'rails', '4.2.5'
 gem 'pg', group: :production
 gem 'sqlite3', group: :development
@@ -19,12 +20,12 @@ group :development do
   gem 'spring'
 end
 
-gem "twitter-bootstrap-rails"
+gem 'twitter-bootstrap-rails'
 gem 'simple_form'
 gem 'devise'
 gem 'cancancan', '~> 1.10'
 gem 'rails_admin'
-gem "font-awesome-rails"
+gem 'font-awesome-rails'
 gem 'geocoder'
 gem 'forecast_io'
 gem 'gmaps4rails'
