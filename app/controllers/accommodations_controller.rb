@@ -6,12 +6,31 @@ class AccommodationsController < ApplicationController
   # GET /accommodations
   # GET /accommodations.json
   def index
-    @accommodations = Accommodation.all
+    @accommodations = Accommodation.all.order("name").page(params[:page]).per(20)
+    @hash = Gmaps4rails.build_markers(@accommodations) do |accommodation, marker|
+      marker.lat accommodation.latitude
+      marker.lng accommodation.longitude
+      marker.infowindow "<h4><img src=\"#{accommodation.logo.thumb.url}\"> #{accommodation.name}</h4><p><b>Address:</b> #{accommodation.address}</p><p><b>Phone:</b> #{accommodation.phone}</p>"
+      marker.json({
+        name:     accommodation.name,
+        address: accommodation.address
+      })
+    end
   end
 
   # GET /accommodations/1
   # GET /accommodations/1.json
   def show
+    @accommodations = Accommodation.find(params[:id])
+    @hash = Gmaps4rails.build_markers(@accommodations) do |accommodation, marker|
+      marker.lat accommodation.latitude
+      marker.lng accommodation.longitude
+      marker.infowindow "<h4><img src=\"#{accommodation.logo.thumb.url}\"> #{accommodation.name}</h4><p><b>Address:</b> #{accommodation.address}</p><p><b>Phone:</b> #{accommodation.phone}</p>"
+      marker.json({
+        name:     accommodation.name,
+        address: accommodation.address
+      })
+    end
   end
 
   # GET /accommodations/new
@@ -71,6 +90,6 @@ class AccommodationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def accommodation_params
-      params.require(:accommodation).permit(:name, :description, :address, :phone, :price_per_night, :free_wi_fi, :air_conditioned, :breakfast, :child_friendly, :airport_shuttle, :gym, :parking, :laundry_service, :pool, :restaurant, :hot_tub, :smoke_free, :accessible, :pets_allowed, :spa, :bar, :latitude, :longitude)
+      params.require(:accommodation).permit(:name, :description, :address, :phone, :price_per_night, :free_wi_fi, :air_conditioned, :breakfast, :child_friendly, :airport_shuttle, :gym, :parking, :laundry_service, :pool, :restaurant, :hot_tub, :smoke_free, :accessible, :pets_allowed, :spa, :bar, :latitude, :longitude, :logo, :website, :facebook, :twitter, :booking_url)
     end
 end
