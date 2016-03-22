@@ -32,7 +32,4 @@ gem 'carrierwave', github:'carrierwaveuploader/carrierwave'
 gem 'mini_magick', '~> 4.3'
 gem 'acts_as_votable', '~> 0.10.0'
 
-gem 'rails_log_stdout', github: 'Heroku/rails_log_stdout' 
-gem 'rails3_serve_static_assets', github: 'Heroku/rails3_serve_static_assets'
-
 gem 'rails_12factor', group: :production
