@@ -19,6 +19,9 @@ Rails.application.routes.draw do
   get 'info/culture'
   get 'dashboards/index'
   get 'pages/index'
+  get 'pages/merchants'
+  get 'pages/pricing_accommodations'
+  get 'pages/pricing_restaurants'
   
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   
